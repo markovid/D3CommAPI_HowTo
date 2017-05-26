@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DIABLO_III</title>
+ </head>
+ <body>  
+  <script src="diablo.js"></script>
+	<div>
+		<h2>The following is some work that I have put into the D3 Community API</h2>
+		<p>I still have more research to do for the API,
+		<p>such as tying character names to the id numbers, and laying out better equipment plots
+		<p>But this should show I am able to write a How-To in the time alotted
+	</div>
+  	<form>
+      <fieldset>
+        <legend>Get Player Info</legend>
+        <label >Battle.Net Username(i.e.mukrumbus-1394)</label>
+        <input type="text" name="Username" id="Username1">
+        <input type="submit" id="UsernameSubmit">
+		</fieldset>
+		<fieldset>
+			<legend>Character Bio</legend>
+			<label>Character from Above Player<label>
+			<select id="Character1_Bio"></select>
+			<input type="submit" id="CharacterSubmit">
+		</fieldset>
+	 
+
+    </form>
+	
+	<div>
+		<h2 id="Player1_Profile"></h2>
+		<ul id="progress"></ul>
+		<dl id="Player1_Characters"></dl>		
+	</div>
+	
+	<div>
+		<h2 id="Character1_Profile"></h2>
+		<dl id="Character1_Info"></dl>
+	</div>
+ </body>
+</html>
