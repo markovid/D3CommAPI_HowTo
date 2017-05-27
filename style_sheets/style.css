@@ -1,5 +1,6 @@
-body{
-	color : black;
-
-	background-image : url("style_images/indexBackgroundIMG.jpg");
+@font-face {
+    font-family: F16;
+    src: url("DIABLO_L.TTF") format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
