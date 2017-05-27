@@ -1,7 +1,5 @@
 body{
   Color : blue;
+    background-image : url("...images/indexBackground.jpg");
 }
 
-div.main{
-  background-image : url("images/homeBackGround.jpg");
-}
