@@ -3,13 +3,13 @@
     src: url("DIABLO_L.TTF");
 }
 body{
-    font-family: "Times New Roman";
+    font-family: sans-serif;
 }
 h1, h2, h3, a{
     font-family: diablo_lite;
 }
 
-input.button {
+.button {
     font-family: diablo_lite;
     background-color: black;
     color: white;
