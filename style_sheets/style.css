@@ -40,6 +40,7 @@ html{
 }
 
 .titleBar{
+        color: white;
         background: black;
         text-align: center;
         border-radius: 25px;
