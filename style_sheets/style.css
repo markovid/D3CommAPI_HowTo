@@ -9,6 +9,18 @@ h1, h2, h3, a{
     font-family: diablo_lite;
 }
 
+h1{
+    font-size : 400%;
+}
+
+h2{
+    font-size : 325%
+}
+
+h3{
+    font-size : 250%
+}
+
 html{
   background-image : url("style_images/genericBackground.jpg");
   height: 100%; 
