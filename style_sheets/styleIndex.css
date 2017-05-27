@@ -9,11 +9,12 @@ body, html{
 
 
 @font-face {
+    font-family: diablo_lite;
     src: url("DIABLO_L.TTF");
 }
 
 .button {
-    background-color: black; /* Green */
+    background-color: black; 
     color: white;
     padding: 15px 32px;
     text-align: center;
