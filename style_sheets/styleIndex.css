@@ -2,9 +2,7 @@ body{
   Color : black;
 
   background-color: lightblue;
-     background-image : url("http://github.com/markovid/D3CommAPI_HowTo/images/indexBackground.JPG");
+     background-image : url("http://github.com/markovid/D3CommAPI_HowTo/images/indexBackground.jpg");
 
 }
-div{
-    background-image : url("http://github.com/markovid/D3CommAPI_HowTo/images/indexBackground.jpg");
-}
+
