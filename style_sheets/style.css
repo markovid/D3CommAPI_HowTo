@@ -41,6 +41,7 @@ html{
 
 .titleBar{
         background: black;
+        border-radius: 25px;
         float: left;
         width: 100%;    
 }
