@@ -9,10 +9,7 @@ body, html{
 
 
 @font-face {
-    font-family: F16;
-    src: url("DIABLO_L.ttf") format('truetype');
-    font-weight: bold;
-    font-style: normal;
+    src: url("DIABLO_L.TTF");
 }
 
 .button {
