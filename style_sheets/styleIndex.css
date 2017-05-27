@@ -1,8 +1,9 @@
-body{
-  Color : black;
-
-  background-color: lightblue;
+body, html{
+  Color : white;
   background-image : url("style_images/indexBackgroundIMG.jpg");
-
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
