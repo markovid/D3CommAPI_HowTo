@@ -1,2 +1,3 @@
 homeBackGround.jpg url: https://blzmedia-a.akamaihd.net/d3/media/wallpapers/wallpaper027/wallpaper027-1024x768.jpg
 font: https://fontzone.net/font-download/diablo-light
+genericBackground.jpg url: https://blzmedia-a.akamaihd.net/d3/media/wallpapers/wallpaper027/wallpaper027-1920x1080.jpg
