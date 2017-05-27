@@ -8,14 +8,14 @@ body, html{
 }
 
 
-font-face {
+@font-face {
     font-family: F16;
     src: url("DIABLO_L.ttf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
-button {
+.button {
     background-color: black; /* Green */
     color: white;
     padding: 15px 32px;
