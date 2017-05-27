@@ -9,6 +9,13 @@ h1, h2, h3, a{
     font-family: diablo_lite;
 }
 
+html{
+  background-image : url("style_images/genericBackground.jpg");
+  height: 100%; 
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
 .button {
     font-family: diablo_lite;
     background-color: black;
