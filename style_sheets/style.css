@@ -38,3 +38,9 @@ html{
 .wrapper{
     text-align: center;
 }
+
+.titleBar{
+        background: black;
+        float: left;
+        width: 100%;    
+}
