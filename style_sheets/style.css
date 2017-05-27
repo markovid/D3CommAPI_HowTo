@@ -3,7 +3,7 @@
     src: url("DIABLO_L.TTF");
 }
 
-body{
+h1, h2, h3, a{
     font-family: diablo_lite;
 }
 
