@@ -2,7 +2,9 @@
     font-family: diablo_lite;
     src: url("DIABLO_L.TTF");
 }
-
+body{
+    font-family: "Times New Roman";
+}
 h1, h2, h3, a{
     font-family: diablo_lite;
 }
