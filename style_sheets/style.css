@@ -12,6 +12,7 @@ h1, h2, h3, a{
 
 html{
   background-image : url("style_images/genericBackground.jpg");
+  background-attachment: fixed;
   height: 100%; 
   background-repeat: no-repeat;
   background-size: auto;
