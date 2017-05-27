@@ -12,6 +12,7 @@ h1, h2, h3, a{
 
 html{
   background-image : url("style_images/genericBackground.jpg");
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   background-attachment: fixed;
   height: 100%; 
   background-repeat: no-repeat;
