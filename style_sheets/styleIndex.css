@@ -1,4 +1,5 @@
 html{
+  font-family: diablo_lite;
   Color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background-image : url("style_images/indexBackgroundIMG.jpg");
@@ -7,15 +8,9 @@ html{
   background-size: auto;
 }
 
-
-
-.button {
-    background-color: black; 
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 24px;
-    border-radius: 12px;
+@font-face {
+    font-family: diablo_lite;
+    src: url("DIABLO_L.TTF");
 }
+
 
