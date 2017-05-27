@@ -55,8 +55,8 @@ html{
 }
 
 .textScroll {
-    height:100px;
-    width:200px;
+    height:1000px;
+    width:350px;
     font-size: 75%;
     overflow:scroll;
     background-color: white;
