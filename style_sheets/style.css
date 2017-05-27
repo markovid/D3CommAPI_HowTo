@@ -4,22 +4,22 @@
 }
 *{
     font-family: sans-serif;
-    font-size: 200%;
+    font-size: 50%;
 }
 h1, h2, h3, a{
     font-family: diablo_lite;
 }
 
 h1{
-    font-size : 400%;
+    font-size : 150%;
 }
 
 h2{
-    font-size : 325%
+    font-size : 75%
 }
 
 h3{
-    font-size : 250%
+    font-size : 60%
 }
 
 html{
