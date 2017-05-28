@@ -8,7 +8,7 @@
  </head>
  <body>
  <div class="titleBar"><h1>Making HTTP Requests</h1></div>
- <p>We use the D3 Community API by making HTTP requests.  The D3 Community API uses only 'GET' requests, this means we are receiving information. We will be using asynchronous calls, which means that the program continues to operative while it waits for the response.  The process is as follows:
+ <p>We use the D3 Community API by making HTTP requests.  The D3 Community API uses only 'GET' requests, this means we are receiving information. We will be using asynchronous calls, which means that the program continues to operate while it waits for the response.  The process is as follows:
    <ol>
      <li><p>First, we make a request object
        <ul><li class="code">var req = new XMLHttpRequest();</ul>
@@ -26,8 +26,10 @@
      <li><p>When the response is received, we use it via it's responseText
        <ul><li>Like many API, the response is plain text for the D3 Community API, so to turn it into a usable JSON object via JSON.parse:
          <li class="code">var response = JSON.parse(req.responseText);
-       </ul>
-       <div class="wrapper">The code should look like this:
+       </ul><br><br>
+	    <p>The code should look like this:
+
+       <div class="wrapper">
          <textarea class="textCode">
            var req = new XMLHttpRequest();
            req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/?locale=en_US&apikey=' + apiKey, true);
@@ -44,7 +46,7 @@
        </div>
     <div class="wrapper">
 			<input type="button" class="button" onclick="location.href='d3Explain.html';" value="Go Back" />
-			<input type="button" class="button" onclick="location.href='apiCalls.html';" value="Let's go!" />
+			<input type="button" class="button" onclick="location.href='careerProfile.html';" value="Let's go!" />
 		</div>
        
        
