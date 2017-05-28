@@ -18,7 +18,7 @@
 	   <p>After we get the item data string entered we can see the request URL.  We can see it has the same ending as the other URL's, namely "?locale=en_US&apikey=" + apiKey.
 	   <p>The beginning is just a different url string, "https://us.api.battle.net/d3/data/item/".
 	   <p>The middle portion is the item data string we just entered into the form, we can store that as a variable, var itemID.  The req.open becomes:
-		   <p class="code">req.open('GET', 'https://us.api.battle.net/d3/data/item/' + itemID + '/?locale=en_US&apikey=' + apiKey, true);
+		   <p class="code">req.open('GET', 'https://us.api.battle.net/d3/data/item/' + itemID + "?locale=en_US&apikey="+ apiKey, true);
 	   	<p>Now we add the event listener, when the listener receives information, we check the status.  If req.status is between 200 and 400, we have success.  We can now parse the responseText and use the data.  We will call the parsed object player1.
 		<p class="code"> var item = JSON.parse(req.responseText);
 	   <p> When all the material is tied together to create a character sheet, we will worry about nesting these API calls together, but currently we can just use sandWitch's head equipment as you see above.
