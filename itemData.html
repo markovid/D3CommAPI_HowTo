@@ -10,4 +10,129 @@
  </head>
    <body> 
  	<div class="titleBar"><h1>Item Data Call</h1></div>
-  <p>The last API call we are going to discuss is the Item Data API Call.  This call allows us to gather specific information about individual items a hero is wearing.  This call is found just below the Hero Profile Call on the Blizzard Developer portal.
+  	<p>The last API call we are going to discuss is the Item Data API Call.  This call allows us to gather specific information about individual items a hero is wearing.  This call is found just below the Hero Profile Call on the Blizzard Developer portal.
+	<div class="wrapper"><img src="images/itemData_1.PNG"/></div>
+	   <p>Once again, everything seems straight forward.  Only one piece of information is needed: the item data string.
+	   <h2>But Where is the Item Data String?!</h2>
+	   <p>Once again, finding the information needed is a little complicated.  item data strings are located in the hero profile JSON object.  The data string is specifically the id property of each object in hero.items we had used previously.
+	   <p> When all the material is tied together to create a character sheet, we will worry about nesting these API calls together, but currently we can just use sandWitch's head equipment as you see above.
+		   <p> This is the item JSON object for sandWitch's head equipment:
+			   <div class="wrapper"><textarea class="textScroll">
+{
+    "id": "Unique_Helm_002_p1",
+    "name": "Leoric's Crown",
+    "icon": "unique_helm_002_p1_demonhunter_male",
+    "displayColor": "orange",
+    "tooltipParams": "item/leorics-crown",
+    "requiredLevel": 1,
+    "itemLevel": 5,
+    "stackSizeMax": 0,
+    "bonusAffixes": 3,
+    "bonusAffixesMax": 3,
+    "accountBound": true,
+    "flavorText": "The crown of the Black King. The taint of his madness wafts from the metal, clinging to any jewel that comes near it.",
+    "typeName": "Legendary Helm",
+    "type": {
+        "twoHanded": false,
+        "id": "Helm"
+    },
+    "damageRange": "0–0 Damage",
+    "armor": {
+        "min": 72.0,
+        "max": 89.0
+    },
+    "slots": ["head"],
+    "attributes": {
+        "primary": [],
+        "secondary": [{
+            "color": "orange",
+            "text": "Increase the effect of any gem socketed into this item by 75–100%. This effect does not apply to Legendary Gems.",
+            "affixType": "default"
+        }],
+        "passive": []
+    },
+    "attributesRaw": {
+        "Durability_Cur": {
+            "min": 500.0,
+            "max": 1000.0
+        },
+        "Gem_Attributes_Multiplier": {
+            "min": 0.75,
+            "max": 1.0
+        },
+        "Armor_Item": {
+            "min": 72.0,
+            "max": 89.0
+        },
+        "Durability_Max": {
+            "min": 500.0,
+            "max": 1000.0
+        },
+        "Sockets": {
+            "min": 1.0,
+            "max": 1.0
+        }
+    },
+    "randomAffixes": [{
+        "oneOf": [{
+            "attributes": {
+                "primary": [{
+                    "color": "blue",
+                    "text": "+18–26 Dexterity",
+                    "affixType": "default"
+                }],
+                "secondary": [],
+                "passive": []
+            },
+            "attributesRaw": {
+                "Dexterity_Item": {
+                    "min": 18.0,
+                    "max": 26.0
+                }
+            }
+        }, {
+            "attributes": {
+                "primary": [{
+                    "color": "blue",
+                    "text": "+18–26 Strength",
+                    "affixType": "default"
+                }],
+                "secondary": [],
+                "passive": []
+            },
+            "attributesRaw": {
+                "Strength_Item": {
+                    "min": 18.0,
+                    "max": 26.0
+                }
+            }
+        }, {
+            "attributes": {
+                "primary": [{
+                    "color": "blue",
+                    "text": "+18–26 Intelligence",
+                    "affixType": "default"
+                }],
+                "secondary": [],
+                "passive": []
+            },
+            "attributesRaw": {
+                "Intelligence_Item": {
+                    "min": 18.0,
+                    "max": 26.0
+                }
+            }
+        }]
+    }],
+    "gems": [],
+    "socketEffects": [],
+    "craftedBy": [],
+    "seasonRequiredToDrop": -1,
+    "isSeasonRequiredToDrop": false,
+    "blockChance": "+0.0% Chance to Block",
+    "description": null
+}
+				   </textarea></div>
+	   
+</body>
+</html>
