@@ -10,11 +10,17 @@
  </head>
    <body> 
  	<div class="titleBar"><h1>Item Data Call</h1></div>
-  	<p>The last API call we are going to discuss is the Item Data API Call.  This call allows us to gather specific information about individual items a hero is wearing.  This call is found just below the Hero Profile Call on the Blizzard Developer portal.
+  	<p>The last API call we are going to discuss is the Item Data API Call.  This call allows us to gather specific information about individual items a hero is wearing.  This call is made just like the other two API calls and details are found found just below the Hero Profile Call on the Blizzard Developer portal.
 	<div class="wrapper"><img src="images/itemData_1.PNG"/></div>
 	   <p>Once again, everything seems straight forward.  Only one piece of information is needed: the item data string.
 	   <h2>But Where is the Item Data String?!</h2>
 	   <p>Once again, finding the information needed is a little complicated.  item data strings are located in the hero profile JSON object.  The data string is specifically the id property of each object in hero.items we had used previously.
+	   <p>After we get the item data string entered we can see the request URL.  We can see it has the same ending as the other URL's, namely "?locale=en_US&apikey=" + apiKey.
+	   <p>The beginning is just a different url string, "https://us.api.battle.net/d3/data/item/".
+	   <p>The middle portion is the item data string we just entered into the form, we can store that as a variable, var itemID.  The req.open becomes:
+		   <p class="code">req.open('GET', 'https://us.api.battle.net/d3/data/item/' + itemID + '/?locale=en_US&apikey=' + apiKey, true);
+	   	<p>Now we add the event listener, when the listener receives information, we check the status.  If req.status is between 200 and 400, we have success.  We can now parse the responseText and use the data.  We will call the parsed object player1.
+		<p class="code"> var item = JSON.parse(req.responseText);
 	   <p> When all the material is tied together to create a character sheet, we will worry about nesting these API calls together, but currently we can just use sandWitch's head equipment as you see above.
 		   <p> This is the item JSON object for sandWitch's head equipment:
 			   <div class="wrapper"><textarea class="textScroll">
@@ -133,6 +139,17 @@
     "description": null
 }
 				   </textarea></div>
+	   
+	   <p>Some interesting information we can find in this JSON object that is not available elsewhere is:
+		   <dl>
+			   <dt><p>The item level is stored in the property named "itemLevel".</dt>
+				   <dd><p class="code">item.itemLevel</dd>
+			   <dt><p>The amount of damage any piece of equipment can do is the damageRange property. It's value is a string that states "(minimum damage value) - (maximum damage value) Damage</dt>
+			   	<dd><p class="code">item.damageRange
+			   <dt><p>The armor property is an object that contains two properties.  'min' is the minimum armor value and 'max' is the maximum armor value.</dt>
+				<dd><p class="code">item.armor.min</dd>
+				<dd><p class="code">item.armor.max</dd>
+
 	   
 </body>
 </html>
