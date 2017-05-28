@@ -1,0 +1,678 @@
+<!DOCTYPE html> 
+<html>
+ <head>
+  <meta charset="UTF-8"> 
+  <title>D3_HowTo</title>  
+	<link rel="stylesheet" type="text/css" href="style_sheets/style.css"> 
+
+ </head>
+   <body>
+   <div class="titleBar"><h1>Hero Profile Call</h1></div>
+      <p>Now we are going to dicuss how to use the Hero Profile Call.  
+      <p>Go back to the Blizzard Developer portal and expand the the Hero Profile Call
+        <div class="wrapper"><img src="images/heroProfile_1.PNG"/></div>
+      <p>Everything seems pretty straight forward again, you just need to enter the information it asks.  
+      <h2>But How Do We Find the Hero ID ?!</h2>
+      <p>This is where things begin to get a little complicated for the D3 Community API, but its nothing impossible.
+      <p>The hero id is the number we just accessed in the Career Profile call.  
+      <p class="code">player1.heroes[i].id
+      <p>Right now, we will just copy and paste each of mukrumbus-1394's character's id's into the field to get the JSON objects
+      <p>At the end of this how-To, we are going to nest these api calls together to pick a character from any player.
+      <div class="wrapper"><img src="images/heroProfile_2.PNG"/></div>
+      <div class="wrapper">
+        <textarea class="textScroll">
+        {
+    "id": 88593940,
+    "name": "sandWitch",
+    "class": "witch-doctor",
+    "gender": 0,
+    "level": 59,
+    "kills": {
+        "elites": 590
+    },
+    "paragonLevel": 0,
+    "hardcore": true,
+    "seasonal": false,
+    "seasonCreated": 0,
+    "skills": {
+        "active": [{
+            "skill": {
+                "slug": "corpse-spiders",
+                "name": "Corpse Spiders",
+                "icon": "witchdoctor_corpsespider",
+                "level": 3,
+                "categorySlug": "primary",
+                "tooltipUrl": "skill/witch-doctor/corpse-spiders",
+                "description": "This is a Signature spell. Signature spells are free to cast.\r\n\r\nThrow a jar with 4 spiders that attack nearby enemies for a total of 576% weapon damage as Physical before dying.",
+                "simpleDescription": "Signature Spell\r\n\r\nThrow a jar with Corpse Spiders that attack nearby enemies before dying.",
+                "skillCalcId": "b"
+            },
+            "rune": {
+                "slug": "corpse-spiders-a",
+                "type": "a",
+                "name": "Blazing Spiders",
+                "level": 55,
+                "description": "Throw a jar with fire spiders that return 3 Mana to you per hit.",
+                "simpleDescription": "Throw a jar with fire spiders that regenerate your Mana each time they attack.",
+                "tooltipParams": "rune/corpse-spiders/a",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "firebats",
+                "name": "Firebats",
+                "icon": "witchdoctor_firebats",
+                "level": 5,
+                "categorySlug": "secondary",
+                "tooltipUrl": "skill/witch-doctor/firebats",
+                "description": "Cost: 125 Mana\r\n\r\nCall forth a swarm of fiery bats to burn enemies in front of you for 475% weapon damage as Fire.",
+                "simpleDescription": "Cost: 125 Mana\r\n\r\nCall forth a swarm of fiery bats.",
+                "skillCalcId": "c"
+            },
+            "rune": {
+                "slug": "firebats-d",
+                "type": "d",
+                "name": "Vampire Bats",
+                "level": 19,
+                "description": "Firebats has an initial Mana cost of 250 mana but no longer has a channeling cost.\r\n\r\nFirebats' damage type turns into Physical.",
+                "simpleDescription": "Firebats costs more to begin casting but no longer has a channeling cost.",
+                "tooltipParams": "rune/firebats/d",
+                "skillCalcId": "Z",
+                "order": 1
+            }
+        }, {
+            "skill": {
+                "slug": "summon-zombie-dogs",
+                "name": "Summon Zombie Dogs",
+                "icon": "witchdoctor_summonzombiedog",
+                "level": 4,
+                "categorySlug": "defensive",
+                "tooltipUrl": "skill/witch-doctor/summon-zombie-dogs",
+                "description": "Cooldown: 45 seconds\r\n\r\nSummon 3 Zombie Dogs from the depths to fight by your side. Each dog deals 120% of your weapon damage as Physical per hit.",
+                "simpleDescription": "Cooldown: 45 seconds\r\n\r\nSummon 3 Zombie Dogs to fight by your side.",
+                "skillCalcId": "Y"
+            },
+            "rune": {
+                "slug": "summon-zombie-dogs-e",
+                "type": "e",
+                "name": "Leeching Beasts",
+                "level": 54,
+                "description": "Your Zombie Dogs heal you for 100% of your Life On Hit with every attack.",
+                "simpleDescription": "Your Zombie Dogs heal you as they attack.",
+                "tooltipParams": "rune/summon-zombie-dogs/e",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "soul-harvest",
+                "name": "Soul Harvest",
+                "icon": "witchdoctor_soulharvest",
+                "level": 9,
+                "categorySlug": "terror",
+                "tooltipUrl": "skill/witch-doctor/soul-harvest",
+                "description": "Cooldown: 12 seconds\r\n\r\nFeed on the life force of enemies within 18 yards. Gain 3% Intelligence for 30 seconds for each affected enemy. This effect stacks up to 5 times.",
+                "simpleDescription": "Cooldown: 12 seconds\r\n\r\nFeed on the life force of enemies to increase your Intelligence for 30 seconds.",
+                "skillCalcId": "d"
+            },
+            "rune": {
+                "slug": "soul-harvest-e",
+                "type": "e",
+                "name": "Vengeful Spirit",
+                "level": 49,
+                "description": "Harvested enemies also take 640% weapon damage as Physical.",
+                "simpleDescription": "Harvested enemies also take damage.",
+                "tooltipParams": "rune/soul-harvest/e",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "spirit-barrage",
+                "name": "Spirit Barrage",
+                "icon": "witchdoctor_spiritbarrage",
+                "level": 17,
+                "categorySlug": "decay",
+                "tooltipUrl": "skill/witch-doctor/spirit-barrage",
+                "description": "Cost: 100 Mana\r\n\r\nBombard an enemy with 4 spirit bolts that deal a total of 600% weapon damage as Cold.",
+                "simpleDescription": "Cost: 100 Mana\r\n\r\nUnleash a spirit blast that can travel long distances and over some obstacles.",
+                "skillCalcId": "g"
+            },
+            "rune": {
+                "slug": "spirit-barrage-e",
+                "type": "e",
+                "name": "Manitou",
+                "level": 59,
+                "description": "Summon a spectre that hovers over you, unleashing spirit bolts at nearby enemies for 6000% weapon damage as Cold over 20 seconds.",
+                "simpleDescription": "Summon a spectre that hovers over you and attacks enemies.",
+                "tooltipParams": "rune/spirit-barrage/e",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "gargantuan",
+                "name": "Gargantuan",
+                "icon": "witchdoctor_gargantuan",
+                "level": 19,
+                "categorySlug": "voodoo",
+                "tooltipUrl": "skill/witch-doctor/gargantuan",
+                "description": "Cooldown: 60 seconds\r\n\r\nSummon a Gargantuan zombie to fight for you. The Gargantuan attacks for 450% of your weapon damage as Physical.",
+                "simpleDescription": "Cooldown: 60 seconds\r\n\r\nSummon a Gargantuan zombie to fight for you.",
+                "skillCalcId": "T"
+            },
+            "rune": {
+                "slug": "gargantuan-c",
+                "type": "c",
+                "name": "Big Stinker",
+                "level": 48,
+                "description": "The Gargantuan is surrounded by a poison cloud that deals 135% weapon damage as Poison per second to nearby enemies.",
+                "simpleDescription": "The Gargantuan is surrounded by a poison cloud that damages nearby enemies.",
+                "tooltipParams": "rune/gargantuan/c",
+                "skillCalcId": "Y",
+                "order": 3
+            }
+        }],
+        "passive": [{
+            "skill": {
+                "slug": "pierce-the-veil",
+                "name": "Pierce the Veil",
+                "icon": "witchdoctor_passive_piercetheveil",
+                "level": 27,
+                "tooltipUrl": "skill/witch-doctor/pierce-the-veil",
+                "description": "All of your damage is increased by 20%, but your Mana costs are increased by 30%.",
+                "flavor": "\"The spirits take their toll. Best to be ready to pay.\" —Shadewalker Zunimassa",
+                "skillCalcId": "W"
+            }
+        }, {
+            "skill": {
+                "slug": "zombie-handler",
+                "name": "Zombie Handler",
+                "icon": "witchdoctor_passive_zombiehandler",
+                "level": 24,
+                "tooltipUrl": "skill/witch-doctor/zombie-handler",
+                "description": "Your Life, and that of your Zombie Dogs and Gargantuan are increased by 20%.\r\n\r\nAdditionally, you may have 1 additional Zombie Dog summoned at one time.",
+                "flavor": "The dead are willing minions. Death to them is not unknown, therefore need not be feared.",
+                "skillCalcId": "d"
+            }
+        }, {
+            "skill": {
+                "slug": "jungle-fortitude",
+                "name": "Jungle Fortitude",
+                "icon": "witchdoctor_passive_junglefortitude",
+                "level": 10,
+                "tooltipUrl": "skill/witch-doctor/jungle-fortitude",
+                "description": "Reduce all damage taken by you and your pets by 15%.",
+                "flavor": "To be one with the jungle is to take what you need and endure what you must.",
+                "skillCalcId": "a"
+            }
+        }, {}]
+    },
+    "items": {
+        "mainHand": {
+            "id": "Unique_CeremonialDagger_003_x1",
+            "name": "Deadly Rebirth",
+            "icon": "unique_ceremonialdagger_003_x1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/CogBCMSNmasGEgcIBBVZiV1qHRsyO18dZklp6h2XBgDLHdiwdfodj7H28h3vcAetMIvSAjjVAkAAUBJYBGCAA2oqCgwIABCm_rCug4CAoC8SGgia96-xDRIHCAQVGxt0zTCP0gI4AEABkAEAgAE1pQHYsHX6rQF0KNqwtQGzliLauAH7puzHBMABARiypeylDVAGWAA"
+        },
+        "offHand": {
+            "id": "Shield_106",
+            "name": "Phalanx Award",
+            "icon": "shield_106_demonhunter_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CloI8-OoQRIHCAQVzwc7bB0aneQEHRyQ6DUd_DIWRh1SpbyNHe2GrzEiCwgBFXZCAwAYIiAcMIvSAjjqBEAAUA5YBGCVBaUBUqW8ja0BRbX5S7gBk9XwigjAAQIYnp_Yww1QBlgA"
+        },
+        "waist": {
+            "id": "Belt_104",
+            "name": "Chain Apex",
+            "icon": "belt_104_witchdoctor_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkIIuv7cLhIHCAQVe6NC1B2egHr_Hb0OGDEdmiUvKx1ZRM5EHXCLd_AiCwgBFYpCAwAYFiAIMInSAjjnA0AAUA5gkgQYifLquwVQBlgA"
+        },
+        "rightFinger": {
+            "id": "Ring_19",
+            "name": "Grisly Source",
+            "icon": "ring_19_demonhunter_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkgI16DY6gMSBwgEFRlVXUQdzsorLx0URQDiHW3eekYd_sN0th19jofMHe2GrzEiCwgAFbT-AQAYHiAKMInSAjigA0AAUBBgywMYstTqxQhQBlgA"
+        },
+        "leftFinger": {
+            "id": "Ring_19",
+            "name": "Union Harvest",
+            "icon": "ring_19_demonhunter_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/Cm8I5PSkswsSBwgEFRlVXUQdeoCQaB3OyisvHWYjBlAdazbAMR3_Xy2xIgsIARV5QgMAGBggEjCJ0gI4xgNAAFAOYNwDaioKDAgAEPj85aGBgIDADxIaCOKthYwHEgcIBBXaCl_-MI_SAjgAQAGQAQAYstTqxQhQBlgA"
+        },
+        "neck": {
+            "id": "Unique_Amulet_002_p1",
+            "name": "Kymbo's Gold",
+            "icon": "unique_amulet_002_p1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/CkcIx4KsAxIHCAQVzysHWx1nSWnqHe7vbiQdlwYAyx3wcAetMInSAjjLAkAAUBJYBmDvAoABOLUBqsVEZMgBv7fnPMgBku_mPBier7mwC1AGWAA"
+        },
+        "torso": {
+            "id": "ChestArmor_201",
+            "name": "Defiant Relic",
+            "icon": "chestarmor_201_witchdoctor_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkUI1oOK0wUSBwgEFSoiGWAdVvwmSB3Udes3HV1FRbsdG53kBB3_Xy2xIgsIABWtRAMAGBggADCJ0gI46QNAAEgCUA5glAQY1IjJgQxQBlgA",
+            "dyeColor": {
+                "item": {
+                    "id": "Dye_18",
+                    "name": "Infernal Dye",
+                    "icon": "dye_18_demonhunter_male",
+                    "displayColor": "white",
+                    "tooltipParams": "item/infernal-dye"
+                }
+            }
+        },
+        "feet": {
+            "id": "Boots_104",
+            "name": "Vagrant Province",
+            "icon": "boots_104_witchdoctor_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkUI1baesAQSBwgEFVtBm38dvQ4YMR0IY7SVHdvai7Ad2Vx5XR1ui3fwIgsIARV5RAMAGCIgDDCJ0gI44gNAAEgBUA5gjQQYtoXa-Q9QBlgA",
+            "dyeColor": {
+                "item": {
+                    "id": "Dye_20",
+                    "name": "Abyssal Dye",
+                    "icon": "dye_20_demonhunter_male",
+                    "displayColor": "white",
+                    "tooltipParams": "item/abyssal-dye"
+                }
+            }
+        },
+        "hands": {
+            "id": "Gloves_201",
+            "name": "Troll's Carriers",
+            "icon": "gloves_201_witchdoctor_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkAI5Zzf7gYSBwgEFcJbkqQdlwYAyx22xntsHTV12owd_18tsSILCAAVyP4BABgWIAQwidICOPIDQABIEVAMYJ0EGPuQ7bYLUAZYAA",
+            "dyeColor": {
+                "item": {
+                    "id": "Dye_06",
+                    "name": "Ranger's Dye",
+                    "icon": "dye_06_demonhunter_male",
+                    "displayColor": "white",
+                    "tooltipParams": "item/rangers-dye"
+                }
+            }
+        },
+        "shoulders": {
+            "id": "Shoulders_201",
+            "name": "Salubrious Balor Pauldrons of the Fortress",
+            "icon": "shoulders_201_witchdoctor_male",
+            "displayColor": "blue",
+            "tooltipParams": "item/CicI0OvEqg8SBwgEFcv4yBUdwwS3OB0ckOg1MInSAji5BEAAUAhg5AQYluPH3AJQBlgA"
+        },
+        "legs": {
+            "id": "Pants_201",
+            "name": "Vanguard Quest",
+            "icon": "pants_201_witchdoctor_male",
+            "displayColor": "yellow",
+            "tooltipParams": "item/CkAImeej9gkSBwgEFZiS1aUdHJDoNR1W_CZIHf7DdLYdCW8vuyILCAEVckIDABggICAwidICONgEQABIElAMYIMFGM-106ILUAZYAA",
+            "dyeColor": {
+                "item": {
+                    "id": "Dye_01",
+                    "name": "Tanner's Dye",
+                    "icon": "dye_01_demonhunter_male",
+                    "displayColor": "white",
+                    "tooltipParams": "item/tanners-dye"
+                }
+            }
+        },
+        "bracers": {
+            "id": "Unique_Bracer_107_x1",
+            "name": "Custerian Wristguards",
+            "icon": "unique_bracer_107_x1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/ClMI88X1-A8SBwgEFcQCXjkdfFm7qx3a174EHcnc_uwd1JTFCR3thq8xMIvSAjjoAkAAUBJYBGCTA4ABJaUB2te-BK0B2te-BLUBlCjKy7gBAMABARiIi_CVB1AGWAA"
+        },
+        "head": {
+            "id": "Unique_Helm_002_p1",
+            "name": "Leoric's Crown",
+            "icon": "unique_helm_002_p1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/CnQI3Yjr0QkSBwgEFc1y6xMdCW8vux3mue6THRyTe0Yd7XAHrR1mIwZQMIvSAjiCA0AASAJQElgEYK0DaikKCwgAEO2oy-WDgIBgEhoI7cCj4Q8SBwgEFW6dvzwwj9ICOABAAZABAIABK40BfflOXbUBOfVOXRiay9u-AlAGWAA",
+            "dyeColor": {
+                "item": {
+                    "id": "Dye_18",
+                    "name": "Infernal Dye",
+                    "icon": "dye_18_demonhunter_male",
+                    "displayColor": "white",
+                    "tooltipParams": "item/infernal-dye"
+                }
+            },
+            "transmogItem": {
+                "id": "Helm_206",
+                "name": "Archon Crown",
+                "icon": "helm_206_demonhunter_male",
+                "displayColor": "white",
+                "tooltipParams": "item/archon-crown"
+            }
+        }
+    },
+    "followers": {},
+    "legendaryPowers": [null, null, null],
+    "stats": {
+        "life": 60713,
+        "damage": 9050.3,
+        "toughness": 210231.0,
+        "healing": 53875.3,
+        "attackSpeed": 1.399999976158142,
+        "armor": 2165,
+        "strength": 66,
+        "dexterity": 66,
+        "vitality": 1718,
+        "intelligence": 1389,
+        "physicalResist": 193,
+        "fireResist": 335,
+        "coldResist": 193,
+        "lightningResist": 278,
+        "poisonResist": 193,
+        "arcaneResist": 193,
+        "critDamage": 1.9300000000000002,
+        "thorns": 0.0,
+        "damageIncrease": 0.0,
+        "critChance": 0.13500000075,
+        "damageReduction": 0.0,
+        "lifeSteal": 0.0,
+        "lifePerKill": 0.0,
+        "goldFind": 1.3200000000000003,
+        "magicFind": 0.0,
+        "blockChance": 0.2,
+        "blockAmountMin": 820,
+        "blockAmountMax": 947,
+        "primaryResource": 843,
+        "secondaryResource": 0,
+        "lifeOnHit": 7742.0
+    },
+    "progression": {
+        "act1": {
+            "completed": true,
+            "completedQuests": [{
+                "slug": "the-fallen-star",
+                "name": "The Fallen Star"
+            }, {
+                "slug": "the-legacy-of-cain",
+                "name": "The Legacy of Cain"
+            }, {
+                "slug": "a-shattered-crown",
+                "name": "A Shattered Crown"
+            }, {
+                "slug": "reign-of-the-black-king",
+                "name": "Reign of the Black King"
+            }, {
+                "slug": "sword-of-the-stranger",
+                "name": "Sword of the Stranger"
+            }, {
+                "slug": "the-broken-blade",
+                "name": "The Broken Blade"
+            }, {
+                "slug": "the-doom-in-wortham",
+                "name": "The Doom in Wortham"
+            }, {
+                "slug": "trailing-the-coven",
+                "name": "Trailing the Coven"
+            }, {
+                "slug": "the-imprisoned-angel",
+                "name": "The Imprisoned Angel"
+            }, {
+                "slug": "return-to-new-tristram",
+                "name": "Return to New Tristram"
+            }]
+        },
+        "act2": {
+            "completed": true,
+            "completedQuests": [{
+                "slug": "shadows-in-the-desert",
+                "name": "Shadows in the Desert"
+            }, {
+                "slug": "the-road-to-alcarnus",
+                "name": "The Road to Alcarnus"
+            }, {
+                "slug": "city-of-blood",
+                "name": "City of Blood"
+            }, {
+                "slug": "a-royal-audience",
+                "name": "A Royal Audience"
+            }, {
+                "slug": "unexpected-allies",
+                "name": "Unexpected Allies"
+            }, {
+                "slug": "betrayer-of-the-horadrim",
+                "name": "Betrayer of the Horadrim"
+            }, {
+                "slug": "blood-and-sand",
+                "name": "Blood and Sand"
+            }, {
+                "slug": "the-black-soulstone",
+                "name": "The Black Soulstone"
+            }, {
+                "slug": "the-scouring-of-caldeum",
+                "name": "The Scouring of Caldeum"
+            }, {
+                "slug": "lord-of-lies",
+                "name": "Lord of Lies"
+            }]
+        },
+        "act3": {
+            "completed": true,
+            "completedQuests": [{
+                "slug": "the-siege-of-bastions-keep",
+                "name": "The Siege of Bastion's Keep"
+            }, {
+                "slug": "turning-the-tide",
+                "name": "Turning the Tide"
+            }, {
+                "slug": "the-breached-keep",
+                "name": "The Breached Keep"
+            }, {
+                "slug": "tremors-in-the-stone",
+                "name": "Tremors in the Stone"
+            }, {
+                "slug": "machines-of-war",
+                "name": "Machines of War"
+            }, {
+                "slug": "siegebreaker",
+                "name": "Siegebreaker"
+            }, {
+                "slug": "heart-of-sin",
+                "name": "Heart of Sin"
+            }]
+        },
+        "act4": {
+            "completed": true,
+            "completedQuests": [{
+                "slug": "fall-of-the-high-heavens",
+                "name": "Fall of the High Heavens"
+            }, {
+                "slug": "the-light-of-hope",
+                "name": "The Light of Hope"
+            }, {
+                "slug": "beneath-the-spire",
+                "name": "Beneath the Spire"
+            }, {
+                "slug": "prime-evil",
+                "name": "Prime Evil"
+            }]
+        },
+        "act5": {
+            "completed": true,
+            "completedQuests": [{
+                "slug": "the-fall-of-westmarch",
+                "name": "The Fall of Westmarch"
+            }, {
+                "slug": "souls-of-the-dead",
+                "name": "Souls of the Dead"
+            }, {
+                "slug": "the-harbinger",
+                "name": "The Harbinger"
+            }, {
+                "slug": "the-witch",
+                "name": "The Witch"
+            }, {
+                "slug": "the-pandemonium-gate",
+                "name": "The Pandemonium Gate"
+            }, {
+                "slug": "the-battlefields-of-eternity",
+                "name": "The Battlefields of Eternity"
+            }, {
+                "slug": "breaching-the-fortress",
+                "name": "Breaching the Fortress"
+            }, {
+                "slug": "angel-of-death",
+                "name": "Angel of Death"
+            }]
+        }
+    },
+    "dead": false,
+    "last-updated": 1495922087
+}
+        </textarea>
+        <textarea class="textScroll">
+        {
+    "id": 88905126,
+    "name": "YMIR",
+    "class": "barbarian",
+    "gender": 0,
+    "level": 3,
+    "kills": {
+        "elites": 2
+    },
+    "paragonLevel": 0,
+    "hardcore": true,
+    "seasonal": false,
+    "seasonCreated": 0,
+    "skills": {
+        "active": [{
+            "skill": {
+                "slug": "cleave",
+                "name": "Cleave",
+                "icon": "barbarian_cleave",
+                "level": 3,
+                "categorySlug": "primary",
+                "tooltipUrl": "skill/barbarian/cleave",
+                "description": "Generate: 6 Fury per attack\r\n\r\nSwing your weapon in a wide arc to deal 200% weapon damage to all enemies caught in the swing.",
+                "simpleDescription": "Generate: 6 Fury per attack\r\n\r\nSwing your weapon in an arc and strike multiple enemies.",
+                "skillCalcId": "b"
+            }
+        }, {
+            "skill": {
+                "slug": "hammer-of-the-ancients",
+                "name": "Hammer of the Ancients",
+                "icon": "barbarian_hammeroftheancients",
+                "level": 2,
+                "categorySlug": "secondary",
+                "tooltipUrl": "skill/barbarian/hammer-of-the-ancients",
+                "description": "Cost: 20 Fury\r\n\r\nCall forth a massive hammer to smash enemies directly in front of you for 535% weapon damage. Hammer of the Ancients has a 1% increased Critical Hit Chance for every 5 Fury that you have.",
+                "simpleDescription": "Cost: 20 Fury\r\n\r\nCall down a mystical hammer and smash groups of enemies.",
+                "skillCalcId": "Z"
+            }
+        }, {}, {}, {}, {}],
+        "passive": [{}, {}, {}, {}]
+    },
+    "items": {
+        "mainHand": {
+            "id": "Sword_1H_001",
+            "name": "Short Sword of the Eel",
+            "icon": "sword_1h_001_demonhunter_male",
+            "displayColor": "blue",
+            "tooltipParams": "item/CiII9tXlxA4SBwgEFdfM2e8dOTHQhDCJ0gI49ARAAFAGYPQEGNHMsYICUAJYAA"
+        },
+        "offHand": {
+            "id": "Mace_1H_001",
+            "name": "Club",
+            "icon": "mace_1h_001_demonhunter_male",
+            "displayColor": "white",
+            "tooltipParams": "item/ChoI25D3PBIHCAQVvgtLnTCJ0gI43wVAAGDfBRiD0aerDFACWAA"
+        },
+        "torso": {
+            "id": "ChestArmor_001",
+            "name": "Cloth Tunic",
+            "icon": "chestarmor_001_barbarian_male",
+            "displayColor": "gray",
+            "tooltipParams": "item/Ch0I0M2d_w8SBwgEFagZGWAwidICOIYEQABQAGCGBBjQ5siBDFACWAA"
+        },
+        "hands": {
+            "id": "Gloves_001",
+            "name": "Gloves",
+            "icon": "gloves_001_barbarian_male",
+            "displayColor": "gray",
+            "tooltipParams": "item/Ch0InOKwyAwSBwgEFUBTkqQwidICOLAEQABQAGCwBBj_su22C1ACWAA"
+        },
+        "legs": {
+            "id": "Pants_001",
+            "name": "Reptilian Cloth Pants of Slaughter",
+            "icon": "pants_001_barbarian_male",
+            "displayColor": "blue",
+            "tooltipParams": "item/CicI19qLgggSBwgEFRaK1aUdKkFmWR0FS3cWMInSAjipBUAAUAhgqQUY09fTogtQAlgA"
+        }
+    },
+    "followers": {},
+    "legendaryPowers": [null, null, null],
+    "stats": {
+        "life": 178,
+        "damage": 8.83518,
+        "toughness": 239.232,
+        "healing": 6.02112,
+        "attackSpeed": 1.2923077098011255,
+        "armor": 39,
+        "strength": 16,
+        "dexterity": 10,
+        "vitality": 13,
+        "intelligence": 10,
+        "physicalResist": 1,
+        "fireResist": 1,
+        "coldResist": 1,
+        "lightningResist": 1,
+        "poisonResist": 1,
+        "arcaneResist": 1,
+        "critDamage": 1.5,
+        "critChance": 0.05000000075,
+        "damageReduction": 0.0,
+        "thorns": 0.0,
+        "lifeSteal": 0.0,
+        "lifePerKill": 3.0,
+        "goldFind": 0.0,
+        "magicFind": 0.0,
+        "blockChance": 0.0,
+        "blockAmountMin": 0,
+        "blockAmountMax": 0,
+        "damageIncrease": 0.0,
+        "lifeOnHit": 0.0,
+        "primaryResource": 100,
+        "secondaryResource": 0
+    },
+    "progression": {
+        "act3": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act2": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act4": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act5": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act1": {
+            "completed": false,
+            "completedQuests": []
+        }
+    },
+    "dead": false,
+    "last-updated": 1494593346
+}
+        </textarea>
+      </div>
+   
+   </body>
+   </html>
