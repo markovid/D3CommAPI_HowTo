@@ -9,7 +9,7 @@
    <body>
 	   <div class="titleBar"><h1>Career Profile Call</h1></div>
 	   <p> This page is going to show you how to use the simplest call in the API, the Career Profile Call.
-		   <p> Remember at the Blizzard dev portal, when you entered mukrumbus-1394 a request URL was posted underneath
+		   <p> Remember at the Blizzard dev portal, when you entered mukrumbus-1394, a request URL was posted underneath
 			   <div class="wrapper"><img src="images/d3Explain_1.PNG"/></div>
 	   <p>We can break this url, 
 	<br><p>https://us.api.battle.net/d3/profile/mukrumbus-1394/?locale=en_US&apikey=7y2eektjvhfu98expct5hwm4w6hvb9r6
@@ -22,8 +22,27 @@
 	   </ol>
 	<p>our req.open should look like this with the new url
 		<p class="code">req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/?locale=en_US&apikey=' + apiKey, true);
-		
+		<br>
+	<p>With this url, as long as we use a valid apiKey and a valid Username1, we can access career profile of that player
+	<p>Now we add the event listener, when the listener receives information, we check the status.  If req.status is between 200 and 400, we have success.  We can now parse the responseText and use the data.  We will call the parsed object player1.
+		<p class="code"> var player1 = JSON.parse(req.responseText);
+		<p>Some interesting information we can find in this JSON object is:
+		   <dl>
+			   <dt><p>The username is stored in the battleTag property.
+				   <dd><p class="code">player1.battleTag
+			   <dt><p>The overall game progression is an object in the player1 object.  Each property is named "act1" through "act5" and has a value of either true or false depending on if  the user ever completed that act.
+			   	<dd><p class="code">player1.progession.act4
+			   <dt><p>The players characters are in a property called "heroes".  "heroes" is a property whose value is an array of objects.  These objects hold crucial information about the player's characters, such as their id and name.  There is no way to know how many characters a player has. Using methods to loop through the heroes without knowing the number is important, so using the .length of an array  can be useful
+				<dd><p class="code">player1.heroes.length
+			   <dt><p>Access a hero's id, name, class, and level as follows(where i is some integer):
+				   <dd><p class="code">player1.heroes[i].id
+				   <dd><p class="code">player1.heroes[i].name
+			           <dd><p class="code">player1.heroes[i].class
+				   <dd><p class="code">player1.heroes[i].level			   
+					
+		   </dl>
+		<p>Here is an example of using the career profile call.  It uses all the information about the player discussed above.  The code displays which acts mukrumbus-1394 has completed, and also lists all of his characters' names, id's, levels, and classes.
 	
- <iframe height='265' scrolling='no' title='Career Profile API Call example' src='//codepen.io/markovid/embed/oWReoY/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/markovid/pen/oWReoY/'>Career Profile API Call example</a> by Dylan Markovic (<a href='https://codepen.io/markovid'>@markovid</a>) on <a href='https://codepen.io'>CodePen</a>.
+ <br><iframe height='265' scrolling='no' title='Career Profile API Call example' src='//codepen.io/markovid/embed/oWReoY/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/markovid/pen/oWReoY/'>Career Profile API Call example</a> by Dylan Markovic (<a href='https://codepen.io/markovid'>@markovid</a>) on <a href='https://codepen.io'>CodePen</a>.
    </body>
  </html>
