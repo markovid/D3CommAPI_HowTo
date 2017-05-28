@@ -31,17 +31,18 @@
 
        <div class="wrapper">
          <textarea class="textCode">
-           var req = new XMLHttpRequest();
-           req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/?locale=en_US&apikey=' + apiKey, true);
-           req.addEventListener('load', function(){
-				        if(req.status >= 200 && req.status < 400){
-					          var response = JSON.parse(req.responseText);		
-                } else {
-					          console.log("Error in network request: " + req.statusText);
-				        }
-			      });
-			      req.send(null);		
-		      });
+			var req = new XMLHttpRequest();
+			Username1 = document.getElementById('Username1').value;
+			console.log('Username is ' + Username1);
+			req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/?locale=en_US&apikey=' + apiKey, true);
+			req.addEventListener('load', function(){
+				if(req.status >= 200 && req.status < 400){
+					var response = JSON.parse(req.responseText);
+
+				} else {
+					console.log("Error in network request: " + req.statusText);
+				}
+			});
          </textarea>
        </div>
     <div class="wrapper">
