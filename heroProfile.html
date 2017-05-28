@@ -8,7 +8,7 @@
  </head>
    <body>
    <div class="titleBar"><h1>Hero Profile Call</h1></div>
-      <p>Now we are going to dicuss how to use the Hero Profile Call.  
+      <p>Now we are going to discuss how to use the Hero Profile Call.  
       <p>Go back to the Blizzard Developer portal and expand the the Hero Profile Call
         <div class="wrapper"><img src="images/heroProfile_1.PNG"/></div>
       <p>Everything seems pretty straight forward again, you just need to enter the information it asks.  
@@ -697,6 +697,13 @@
 		   <p>items is an object that contains objects which signify individual pieces of equipment.  What is interesting and unique about this object is that properties do not exist if the character does not have items equipped.  For instance scroll through sandWitch's and YMIR's JSON objects.  sandWitch has an items.waist, items.rightFinger, and items.leftFinger property, where YMIR does not.  
 		   <p>This is an important quality of the items object in terms of scripting.  In order to not create errors in one's code, logic statements must be used.  If one wants to display the hero's head equipment in a particular location, he must first make sure the character has a head property via the hasOwnProperty function.
 		   <p class="code"> if(items.hasOwnProperty('head')){ ... };
+			   
+	   <p>There is one final piece of information needed to use the items object to its full ability, and that is how to find the images associated with the objects.  This is no way to read through the D3 documentation to find out how to access the images, but snooping through the pages of <a href="https://us.battle.net/d3/en/community/">Diablo 3 Community</a> will let you discover that all item images used in the D3 api are found at https://blzmedia-a.akamaihd.net/d3/icons/items/.
+	   <p>Entering that into your browser will declare an error, but this URL will be used for the beginning string.  There are too options, either using the small or the large directory in this url.  We will use the large.  Let's make this URL a variable called imageURL.
+	   <p class="code">var imageURL = 'https://blzmedia-a.akamaihd.net/d3/icons/items/large/';
+	   <p>Now That we have the directory, we can specify which image we want from the hero JSON object.  Notice how each object in hero.items has an icon property.  This is the name of the image we are looking for. Append this name to imageURL
+	    <p>Finally, We know exactly where to find the image and the only thing left to do is specify the file type.  These images are .PNG files, so append ".png" to the entire string as follows:
+		    <p class="code"> imageURL + hero.items[prop].icon + ".png";
 		   
 
 	   
