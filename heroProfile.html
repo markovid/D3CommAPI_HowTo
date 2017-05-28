@@ -19,6 +19,12 @@
       <p>Right now, we will just copy and paste each of mukrumbus-1394's character's id's into the field to get the JSON objects
       <p>At the end of this how-To, we are going to nest these api calls together to pick a character from any player.
       <div class="wrapper"><img src="images/heroProfile_2.PNG"/></div>
+	   <p>This request URL seems nearly identical to the request URL for the Career Profile Call.  In fact, it only has one difference. Between the username and the locale we have "/hero/88905126".  This is just the hero id number we pasted in above. We can replace this string with '/hero/' + a variable for the hero id, var heroID.
+	   <p>Placing this addition into our last request URL we made for the career profile yields this req.open:
+	   <p class="code">req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/hero/'  + heroID+ '?locale=en_US&apikey=' + apiKey, true);
+           <p>Adding the hero id is the only difference in this request.
+		   <br><p>Below are the JSON Objects returned from using the call for both of mukrumbus-1394's characters:
+	   
       <div class="wrapper">
         <textarea class="textScroll">
         {
@@ -673,6 +679,7 @@
 }
         </textarea>
       </div>
+	   <p>scrolling through the two JSON objects we can see the character named "sandWitch" is a level 59 witch doctor and the other characer is named "YMIR" and is a level 3 barbarian.  These objects look similar, but as you can see sandWitch has many more properties and information.
 	   
 	   <div><iframe height='265' scrolling='no' title='Hero Profile Example' src='//codepen.io/markovid/embed/JNqOYm/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/markovid/pen/JNqOYm/'>Hero Profile Example</a> by Dylan Markovic (<a href='https://codepen.io/markovid'>@markovid</a>) on <a href='https://codepen.io'>CodePen</a></iframe></div>
    
