@@ -12,7 +12,7 @@
  <h1>What exactly is an API?</h1>
  <p>An API, which stands for 'Application Program Interface', is a set of tools that allow web developers to create applications.  An API is analgous to a library of functions you would use in other programming languages such as C or C++.
  <br>
- 
+	  
  <h1>What Information Can One Get from the D3 Community API?</h1>
  <p>By using API calls, one can get information about player profiles, player's individual characters, the character's equipment, and about in game characters like blacksmiths and hired help.
  <br>
@@ -20,9 +20,12 @@
  <br>
 	 
 <h1>Where Can One Find these API Calls?</h1>
-<p>Go to the Battle.net Developer portal and select the API Docs in the upper left hand corner, then select the D3 Community API-US.  Documentation for what the calls receive and what parameters they need to be called are well documented.
+<p>Go to the Battle.net Developer Portal and select the API Docs in the upper left hand corner, then select the D3 Community API-US.  Documentation for what the calls receive and what parameters they need to be called are well documented.
 <p>For example, select the Career Profile and it will expand to have strings entered into a form. Enter in any particular battle tag (this is the username of a player). If you do not know any, you can use mukrumbus-1394 as you see below.  Do not worry about the callback entry, we are not going to be working with JSONP during this how to.
 	<div class="wrapper"><img src="images/d3Explain_1.PNG"/></div>
+	 
+<h1>What Information is Given in these API Calls?</h1>
+	 <p>Information is sent in a JSON Object.  If you scroll further down on the Battle.net Developer Portal, you will see the reponse body located for the career profile call you just made.  The JSON Object holds tons of information about the player.  If you scroll though, you can notice particular details about mukrumbus-1394.
 	 
 <div class="wrapper"><textarea class="textScroll">{
     "battleTag": "mukrumbus#1394",
@@ -185,10 +188,11 @@
         }
     }
 }</textarea></div>
-  
+<p>For instance, at the bottom of the JSON object, we can see the his "highestHardcoreLevel" is 59.  Also, He has progressed through all five acts in the Diablo 3 game.
+<p>Now that we have a grasp of how to read the information sent by the API Calls, let's begin actually using these calls.
  		<div class="wrapper">
 			<input type="button" class="button" onclick="location.href='d3Info.html';" value="Go Back" />
-			<input type="button" class="button" onclick="location.href='d3Explain.html';" value="Let's go!" />
+			<input type="button" class="button" onclick="location.href='d3CareerProfile.html';" value="Let's go!" />
 		</div>
   </body>
 </html>
