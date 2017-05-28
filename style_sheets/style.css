@@ -82,4 +82,12 @@ html{
     border-color: black;
     border-radius: 12px;
 }
+table{
+	border-style: solid;
+	border-color: white;
+    background-color: black;
+}
 
+td{
+	border-style: solid;
+}
