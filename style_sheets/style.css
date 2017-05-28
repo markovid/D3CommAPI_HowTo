@@ -91,3 +91,7 @@ table{
 td{
 	border-style: solid;
 }
+td img{
+    margin-left: auto;
+    margin-right: auto;
+}
