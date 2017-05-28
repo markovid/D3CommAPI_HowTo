@@ -24,6 +24,12 @@ html{
   background-size: auto;
 }
 
+.code{
+    font-family: Consolas;
+    background-color: white;
+    Color: blue;
+}
+
 .button {
     font-family: diablo_lite;
     background-color: black;
