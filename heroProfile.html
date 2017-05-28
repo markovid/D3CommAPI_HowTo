@@ -23,6 +23,8 @@
 	   <p>Placing this addition into our last request URL we made for the career profile yields this req.open:
 	   <p class="code">req.open('GET', 'https://us.api.battle.net/d3/profile/' + Username1 + '/hero/'  + heroID+ '?locale=en_US&apikey=' + apiKey, true);
            <p>Adding the hero id is the only difference in this request.
+	   <p>Now we add the event listener, when the listener receives information, we check the status.  If req.status is between 200 and 400, we have success.  We can now parse the responseText and use the data.  We will call the parsed object hero.
+		<p class="code"> var hero = JSON.parse(req.responseText);
 		   <br><p>Below are the JSON Objects returned from using the call for both of mukrumbus-1394's characters:
 	   
       <div class="wrapper">
@@ -679,7 +681,24 @@
 }
         </textarea>
       </div>
-	   <p>scrolling through the two JSON objects we can see the character named "sandWitch" is a level 59 witch doctor and the other characer is named "YMIR" and is a level 3 barbarian.  These objects look similar, but as you can see sandWitch has many more properties and information.
+		<p>Some interesting information we can find in these JSON objects are:
+		   <dl>
+			   <dt><p>The hero name is stored in the name property.</dt>
+				   <dd><p class="code">hero.name</dd>
+			   <dt><p>The hero level is stored in the level property.</dt>
+				   <dd><p class="code">hero.level</dd>
+			   <dt><p>The number of elite enemies the hero has killed is stored in an object named kills.  This object has only one property, which is named elites and signifies the quantity of elites killed</dt>
+				   <dd><p class="code">hero.kills.elites</dd>
+			   <dt><p>The hero's statistics are all stored in the property 'stats'. 'stats' is an object that holds each specific statistic of the hero.  One either needs to know which stat that are looking for or loop through all of them.  For example, intelligence is:</dt>
+				   <dd><p class="code">hero.stats.intelligence</dd>		   	   
+					
+		   </dl>
+	   <p>There is one last property that is important to cover in the hero profile object.  This property is items.  
+		   <p>items is an object that contains objects which signify individual pieces of equipment.  What is interesting and unique about this object is that properties do not exist if the character does not have items equipped.  For instance scroll through sandWitch's and YMIR's JSON objects.  sandWitch has an items.waist, items.rightFinger, and items.leftFinger property, where YMIR does not.  
+		   <p>This is an important quality of the items object in terms of scripting.  In order to not create errors in one's code, logic statements must be used.  If one wants to display the hero's head equipment in a particular location, he must first make sure the character has a head property via the hasOwnProperty function.
+		   <p class="code"> if(items.hasOwnProperty('head')){ ... };
+		   
+
 	   
 	   <div><iframe height='265' scrolling='no' title='Hero Profile Example' src='//codepen.io/markovid/embed/JNqOYm/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/markovid/pen/JNqOYm/'>Hero Profile Example</a> by Dylan Markovic (<a href='https://codepen.io/markovid'>@markovid</a>) on <a href='https://codepen.io'>CodePen</a></iframe></div>
    
