@@ -10,7 +10,7 @@
  </head>
    <body> 
  	<div class="titleBar"><h1>Item Data Call</h1></div>
-  	<p>The last API call we are going to discuss is the Item Data API Call.  This call allows us to gather specific information about individual items a hero is wearing.  This call is made just like the other two API calls and details are found found just below the Hero Profile Call on the Blizzard Developer portal.
+  	<p>The last API call we are going to discuss is the Item Data API Call.  It is a simple call to use, but finding the parameters is complicated  This call allows us to gather specific information about individual items a hero is wearing.  This call is made just like the other two API calls and details are found found just below the Hero Profile Call on the Blizzard Developer portal.
 	<div class="wrapper"><img src="images/itemData_1.PNG"/></div>
 	   <p>Once again, everything seems straight forward.  Only one piece of information is needed: the item data string.
 	   <h2>But Where is the Item Data String?!</h2>
@@ -149,7 +149,12 @@
 			   <dt><p>The armor property is an object that contains two properties.  'min' is the minimum armor value and 'max' is the maximum armor value.</dt>
 				<dd><p class="code">item.armor.min</dd>
 				<dd><p class="code">item.armor.max</dd>
-
-	   
+		<p>The Following is a code example of how to use the Item Data Call.			
+	<div><iframe height='265' scrolling='no' title='Item Data Call Example' src='//codepen.io/markovid/embed/PmvQQg/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/markovid/pen/PmvQQg/'>Item Data Call Example</a> by Dylan Markovic (<a href='https://codepen.io/markovid'>@markovid</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe></div>
+	<p> Now that we know how to use the final API call of the How-To, let's see how to tie it all together!
+		<div class="wrapper">
+			<input type="button" class="button" onclick="location.href='heroProfile.html';" value="Go Back" />
+			<input type="button" class="button" onclick="location.href='allTogether.html';" value="Let's go!" />
+		</div>   
 </body>
 </html>
