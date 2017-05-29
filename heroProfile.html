@@ -9,15 +9,15 @@
    <body>
    <div class="titleBar"><h1>Hero Profile Call</h1></div>
       <p>Now we are going to discuss how to use the Hero Profile Call.  
-      <p>Go back to the Blizzard Developer portal and expand the the Hero Profile Call
+      <p>Go back to the Blizzard Developer portal and expand the Hero Profile Call
         <div class="wrapper"><img src="images/heroProfile_1.PNG"/></div>
       <p>Everything seems pretty straight forward again, you just need to enter the information it asks.  
       <h2>But How Do We Find the Hero ID ?!</h2>
-      <p>This is where things begin to get a little complicated for the D3 Community API, but its nothing impossible.
+      <p>This is where things begin to get a little complicated for the D3 Community API, but it is nothing impossible.
       <p>The hero id is the number we just accessed in the Career Profile call.  
       <p class="code">player1.heroes[i].id
       <p>Right now, we will just copy and paste each of mukrumbus-1394's character's id's into the field to get the JSON objects
-      <p>At the end of this how-To, we are going to nest these api calls together to pick a character from any player.
+      <p>At the end of this How-To, we are going to nest these api calls together to pick a character from any player.
       <div class="wrapper"><img src="images/heroProfile_2.PNG"/></div>
 	   <p>This request URL seems nearly identical to the request URL for the Career Profile Call.  In fact, it only has one difference. Between the username and the locale we have "/hero/88905126".  This is just the hero id number we pasted in above. We can replace this string with '/hero/' + a variable for the hero id, var heroID.
 	   <p>Placing this addition into our last request URL we made for the career profile yields this req.open:
